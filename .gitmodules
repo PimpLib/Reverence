@@ -1,0 +1,3 @@
+[submodule "vendor/Respect-Rest"]
+	path = vendor/Respect-Rest
+	url = git@github.com:PimpLib/Rest.git
