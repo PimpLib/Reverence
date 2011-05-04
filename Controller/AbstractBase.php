@@ -28,6 +28,29 @@ abstract class AbstractBase implements \Respect\Rest\Routable {
         return null;
     }
 
+    protected function getPutJson() {
+        $raw = trim(file_get_contents('php://input'));
+        if ($raw === '') {
+            \Reverence\HTTP\Response::status(400);
+            $this->_ok = false;
+            $this->_errors[] = 'No value supplied.';
+            $this->display();
+            die();
+        }
+
+        $value = json_decode($raw, true);
+        if ($value === null) {
+            \Reverence\HTTP\Response::status(400);
+            $this->_ok = false;
+            $this->_errors[] = 'Invalid JSON';
+            $this->display();
+            die();
+        }
+
+        return $value;
+
+    }
+
     protected function handleUnauthRequest() {
         \Reverence\HTTP\Response::status(403);
         echo "Unauthenticated.";
