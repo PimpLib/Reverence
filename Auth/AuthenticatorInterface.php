@@ -16,6 +16,8 @@ interface AuthenticatorInterface {
      * @abstract
      * @return boolean true if the current request is authenticated.
      */
+    public function login();
+    public function logout();
     public function isAuthenticated();
     public function getUser();
     public function getAuthTemplate();
