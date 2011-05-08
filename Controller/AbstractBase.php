@@ -28,7 +28,7 @@ abstract class AbstractBase implements \Respect\Rest\Routable {
         return null;
     }
 
-    protected function getPutJson() {
+    protected function getInputJson() {
         $raw = trim(file_get_contents('php://input'));
         if ($raw === '') {
             \Reverence\HTTP\Response::status(400);

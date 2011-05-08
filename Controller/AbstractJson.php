@@ -23,13 +23,17 @@ class AbstractJson extends AbstractBase {
         {
            \Reverence\HTTP\Response::contentType('text/plain');
         }
-        $resp = json_encode(
-            array(
-                 'ok' => $this->_ok,
-                 'response' => $this->_response,
-                 'errors' => $this->_errors
-            )
-        );
+
+        if ($this->_ok !== true) {
+            $resp = json_encode(
+                array('errors'=>$this->_errors)
+            );
+        }
+        else {
+            $resp = json_encode(
+                $this->_response
+            );
+        }
         if (Config::get('debug')) {
             echo \Reverence\Utils\Json::json_format($resp);
         }
