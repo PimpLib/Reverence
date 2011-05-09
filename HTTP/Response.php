@@ -15,6 +15,7 @@ class Response {
 
     // 2xx Success
     const HTTP_STATUS_200 = 'OK';
+    const HTTP_STATUS_201 = 'Created';
     const HTTP_STATUS_202 = 'Accepted';
     const HTTP_STATUS_203 = 'Non-Authoritative Information';
     const HTTP_STATUS_204 = 'No Content';
